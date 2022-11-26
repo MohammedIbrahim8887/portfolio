@@ -1,3 +1,40 @@
+<<<<<<< HEAD
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+const phrases = ["Web Developer", "UI/UX Designer", "Mobile Developer"];
+
+const el = document.getElementById("typewriter");
+let sleepTime = 100;
+let curPhraseIndex = 0;
+
+const writeLoop = async() => {
+    while (true) {
+        let curWord = phrases[curPhraseIndex];
+
+        for (let i = 0; i < curWord.length; i++) {
+            el.innerText = curWord.substring(0, i + 1);
+            await sleep(sleepTime);
+        }
+
+        await sleep((sleepTime = 200));
+
+        for (let i = curWord.length; i > 0; i--) {
+            el.innerText = curWord.substring(0, i - 1);
+            await sleep(sleepTime);
+        }
+
+        await sleep((sleepTime = 200));
+
+        if (curPhraseIndex === phrases.length - 1) {
+            curPhraseIndex = 0;
+        } else {
+            curPhraseIndex++;
+        }
+    }
+};
+writeLoop();
+=======
 var TxtType = function(el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -56,3 +93,4 @@ window.onload = function() {
     css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
     document.body.appendChild(css);
 };
+>>>>>>> fe542630bc694bd66d5d6eebb2a8cecc642133e5
